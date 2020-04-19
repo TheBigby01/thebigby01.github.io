@@ -1,13 +1,3 @@
-//Updatable Var
-var n = 50;
-var ext = ".jpeg";
-var backgroundColor = [255, 255, 255];
-var canvasPixelX = 1070;
-var canvasPixelY = 720;
-var imageScaleDiv = 1.5;
-var revisionRender = 2;
-//Updatable Var
-
 var img = [];
 var AddedImg = [];
 var Poi = [];
@@ -27,7 +17,6 @@ function AddImg(x) {
     imgPlaced = true;
     AddedImg[x] = 1;
     imgCount++;
-    console.log(x);
   } else {
     for (i = 0; i < canvasPixelX - wid; i++) {
       for (j = 0; j < canvasPixelY - hei; j++) {
@@ -50,7 +39,6 @@ function AddImg(x) {
             imgPlaced = true;
             AddedImg[x] = 1;
             imgCount++;
-            console.log(x);
             break;
           }
         }
@@ -61,7 +49,6 @@ function AddImg(x) {
   if (imgPlaced == false) {
     setup();
   }
-  console.log("Image Added!");
   for (i = _x; i <= _x + wid; i++) {
     for (j = _y; j <= _y + hei; j++) {
       //console.log("i = ", i, "j = ", j);
@@ -72,9 +59,14 @@ function AddImg(x) {
 }
 
 function setup() {
-  console.log("setup()");
-  createCanvas(canvasPixelX, canvasPixelY);
+  canvasPixelX = windowWidth;
+  canvasPixelY = windowHeight;
+  createCanvas(windowWidth, windowHeight);
   background(backgroundColor[0], backgroundColor[1], backgroundColor[2]);
+  backgroundColor[0] = Math.round(random(0, 255));
+  backgroundColor[1] = Math.round(random(0, 255));
+  backgroundColor[2] = Math.round(random(0, 255));
+
   imgCount = 0;
   for (i = 0; i < n; i++) {
     AddedImg[i] = 0;
@@ -94,11 +86,6 @@ function draw() {
       setup();
       renderTime++;
     }
-    if (logged == false) {
-      logged = true;
-      createP("Finished!");
-    }
-    return;
   } else if (imgLeft() <= n / 4) {
     for (i = 0; i < n; i++)
       if (AddedImg[i] == 0) {

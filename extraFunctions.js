@@ -1,6 +1,8 @@
 function preload() {
+  canvasPixelX = windowWidth;
+  canvasPixelY = windowHeight;
   for (i = 0; i < n; i++) {
-    img[i] = loadImage("Image/" + String(i) + ext);
+    img[i] = loadImage("Image/" + String(i) + ext_1);
   }
   for (i = 0; i <= canvasPixelX; i++) Poi.push([]);
 }
